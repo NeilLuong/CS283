@@ -30,11 +30,7 @@
 
 - You should have also learned about "pipes". Redirection and piping both involve controlling input and output in the shell, but they serve different purposes. Explain the key differences between redirection and piping.
 
-    > **Answer**:  Redirection controls where a command reads from or writes to, typically involving files (e.g., `ls > output.txt`).  
-
-Piping (`|`), however, connects the output of one command as the input to another (e.g., `ls | grep txt`), enabling efficient data processing.  
-
-Pipes are temporary and used for inter-process communication, whereas redirection stores data for later use.
+    > **Answer**:  Redirection controls where a command reads from or writes to, typically involving files (e.g., `ls > output.txt`). Piping (`|`), however, connects the output of one command as the input to another (e.g., `ls | grep txt`), enabling efficient data processing. Pipes are temporary and used for inter-process communication, whereas redirection stores data for later use.
 
 
 - STDERR is often used for error messages, while STDOUT is for regular output. Why is it important to keep these separate in a shell?
@@ -43,8 +39,4 @@ Pipes are temporary and used for inter-process communication, whereas redirectio
 
 - How should our custom shell handle errors from commands that fail? Consider cases where a command outputs both STDOUT and STDERR. Should we provide a way to merge them, and if so, how?
 
-    > **Answer**:  Our shell should display `STDERR` separately by default but provide an option to merge it with `STDOUT` using `2>&1` (e.g., `command > output.txt 2>&1`).  
-
-Handling failures should involve checking exit codes and printing meaningful error messages.  
-
-If both `STDOUT` and `STDERR` are redirected, the shell should ensure proper ordering to avoid jumbled output.
+    > **Answer**:  Our shell should display `STDERR` separately by default but provide an option to merge it with `STDOUT` using `2>&1` (e.g., `command > output.txt 2>&1`). Handling failures should involve checking exit codes and printing meaningful error messages. If both `STDOUT` and `STDERR` are redirected, the shell should ensure proper ordering to avoid jumbled output.
