@@ -4,15 +4,7 @@
 
 2. This week's lecture on TCP explains that it is a reliable stream protocol rather than a message-oriented one. Since TCP does not preserve message boundaries, how should a networked shell protocol define and detect the beginning and end of a command sent over a TCP connection? What challenges arise if this is not handled correctly?
 
-> **Answer**: Shell protocol uses delimiter-based framing - null characters (\0) mark the end of commands sent from client to server, and a special EOF character marks command output completion. Several probelms might occur without proper boundary handling: 
-
-Message confusion: Multiple commands might be interpreted as one, or a single command split across reads
-
-Protocol desynchronization: Once boundaries are confused, it's hard to reestablish proper framing
-
-Deadlocks: The client might wait indefinitely for an end marker that never arrives 
-
-Buffer overflows: Without size limits, receivers might overflow buffers
+> **Answer**: Shell protocol uses delimiter-based framing - null characters (\0) mark the end of commands sent from client to server, and a special EOF character marks command output completion. Several problems might occur without proper boundary handling: 1) Message confusion: Commands might merge or fragment, 2) Protocol desynchronization: Once framing is lost, it's difficult to recover proper alignment, 3) Deadlocks: Clients may wait indefinitely for missing end markers, 4) Buffer overflows: Without size limits, receivers risk memory corruption.
 
 3. Describe the general differences between stateful and stateless protocols.
 
