@@ -30,10 +30,7 @@ void handle_signal(int sig) {
     exit(0);  // Exit cleanly
 }
 
-// Server initialization function
-void initialize_server(int port) {
-    // Uncomment the signal.h include at the top of your file!
-    
+void initialize_server(int port) {    
     // Setup signal handling
     signal(SIGINT, handle_signal);   // Handle Ctrl+C
     signal(SIGTERM, handle_signal);  // Handle kill command
@@ -176,7 +173,6 @@ int boot_server(char *ifaces, int port){
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port);
     
-    // Important fix: Use INADDR_ANY when ifaces is "0.0.0.0"
     if (strcmp(ifaces, "0.0.0.0") == 0) {
         addr.sin_addr.s_addr = htonl(INADDR_ANY);
         printf("Using INADDR_ANY\n");
