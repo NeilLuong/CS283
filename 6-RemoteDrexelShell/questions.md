@@ -10,7 +10,7 @@
 
 > **Answer**: Stateful Protocols: Maintain client session information across requests, remember previous interactions for context in current operations, require connection establishment and teardown phases, examples: FTP, SSH, and your remote shell protocol, more efficient for related operations but need resources for state, vulnerable to disruptions (server crashes lose state)
 
-Stateless Protocols: Treat each request independently with no relation to previous ones, don't maintain client state between requests, each request contains all information needed to complete it, examples: HTTP (basic form), DNS More resilient to failures but may require more bandwidth, easier to scale horizontally
+> **Answer**: Stateless Protocols: Treat each request independently with no relation to previous ones, don't maintain client state between requests, each request contains all information needed to complete it, examples: HTTP (basic form), DNS More resilient to failures but may require more bandwidth, easier to scale horizontally
 
 4. Our lecture this week stated that UDP is "unreliable". If that is the case, why would we ever use it?
 
