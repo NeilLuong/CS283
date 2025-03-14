@@ -13,7 +13,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Local mode: Basic command execution" {
+@test "Basic command execution" {
     run ./dsh <<EOF
 echo "hello world"
 exit
@@ -24,7 +24,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Local mode: Simple pipe" {
+@test "Simple pipe" {
     run ./dsh <<EOF
 echo "hello world" | grep "hello"
 exit
@@ -35,7 +35,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Local mode: Multiple pipes" {
+@test "Multiple pipes" {
     run ./dsh <<EOF
 echo -e "line1\nline2\nline3" | grep "line" | wc -l
 exit
@@ -46,7 +46,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Local mode: Built-in cd command" {
+@test "Built-in cd command" {
     run ./dsh <<EOF
 cd /tmp
 pwd
@@ -58,7 +58,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Local mode: Command not found" {
+@test "Command not found" {
     run ./dsh <<EOF
 nonexistentcommand12345
 exit
@@ -188,7 +188,7 @@ EOF
     [[ "$output" == *"Testing connection"* ]]
 }
 
-@test "Remote execution: Simple command" {
+@test "Remote: Simple command" {
     
     # Start server in background with a unique port
     TEST_PORT=12346
@@ -212,7 +212,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Remote execution: Pipes" {
+@test "Remote: Pipes" {
     
     # Start server in background with a unique port
     TEST_PORT=12347
@@ -236,7 +236,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Remote execution: Built-in command cd" {
+@test "Remote: Built-in command cd" {
     
     # Start server in background with a unique port
     TEST_PORT=12348
@@ -261,7 +261,7 @@ EOF
     [ "$status" -eq 0 ]
 }
 
-@test "Remote execution: stop-server command" {
+@test "Remote: stop-server command" {
     # Start server in background with a unique port
     TEST_PORT=12349
     ./dsh -s -p $TEST_PORT &
@@ -306,7 +306,7 @@ EOF
     [[ "$OUTPUT" == *"connection failed"* ]]
 }
 
-@test "Basic: Shell starts and accepts input" {
+@test "Shell starts and accepts input" {
     run "./dsh" <<EOF
 echo "Hello, dsh!"
 EOF
@@ -315,7 +315,7 @@ EOF
     [[ "$output" =~ "Hello, dsh!" ]]
 }
 
-@test "Built-in: exit command" {
+@test "exit command" {
     run "./dsh" <<EOF
 exit
 EOF
